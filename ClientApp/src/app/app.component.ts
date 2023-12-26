@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Tarea } from './Interface/Tarea';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TareaService } from './Services/tarea.service';
-import { privateDecrypt } from 'crypto';
 
 @Component({
   selector: 'app-root',

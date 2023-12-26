@@ -7,7 +7,7 @@ import { Tarea } from '../Interface/Tarea';
   providedIn: 'root',
 })
 export class TareaService {
-  
+
   private edpoint: string = 'https://localhost:44401/';
   private apiUrl: string = this.edpoint + 'Tarea/';
 
