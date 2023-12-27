@@ -6,8 +6,8 @@ const target = env.ASPNETCORE_HTTPS_PORT ? `https://localhost:${env.ASPNETCORE_H
 const PROXY_CONFIG = [
   {
     context: [
-      "/weatherforecast",
-   ],
+      "/api/Tarea" // Agrega la ruta de la API de tareas
+    ],
     proxyTimeout: 10000,
     target: target,
     secure: false,
@@ -15,6 +15,6 @@ const PROXY_CONFIG = [
       Connection: 'Keep-Alive'
     }
   }
-]
+];
 
 module.exports = PROXY_CONFIG;

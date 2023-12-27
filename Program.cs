@@ -10,6 +10,21 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddNpgsql<DbTareasContext>(builder.Configuration.GetConnectionString("ConnectionPostgres"));
 AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
+// Agrega el siguiente código en la configuración del servicio en tu Startup.cs
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowOrigin",
+        builder =>
+        {
+            builder.WithOrigins("https://localhost:44401")
+                   .AllowAnyHeader()
+                   .AllowAnyMethod();
+        });
+});
+
+// Luego, en el middleware, antes de app.UseEndpoints(), agrega:
+
 
 
 var app = builder.Build();
@@ -21,6 +36,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+app.UseCors("AllowOrigin");
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();

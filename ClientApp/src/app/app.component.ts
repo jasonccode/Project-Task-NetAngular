@@ -32,7 +32,7 @@ export class AppComponent implements OnInit {
 
   agregarTarea() {
     const request: Tarea = {
-      idTarea: 0,
+      idtarea: 0,
       nombre: this.formularioTarea.value.nombre,
     };
 
@@ -48,14 +48,17 @@ export class AppComponent implements OnInit {
   }
 
   eliminarTarea(tarea: Tarea) {
-    this._tareaServicio.delete(tarea.idTarea).subscribe({
+    console.log('ID de la tarea a eliminar:', tarea.idtarea);
+
+    this._tareaServicio.delete(tarea.idtarea).subscribe({
       next: (data) => {
-        const nuevaLista = this.listaTareas.filter(
-          (item) => item.idTarea != tarea.idTarea
-        );
+        const nuevaLista = this.listaTareas.filter(item => item.idtarea != tarea.idtarea);
         this.listaTareas = nuevaLista;
       },
-      error: (e) => {},
+      error: (e) => {
+        console.error('Error al eliminar tarea', e);
+      },
     });
   }
+
 }

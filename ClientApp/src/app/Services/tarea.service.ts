@@ -8,20 +8,19 @@ import { Tarea } from '../Interface/Tarea';
 })
 export class TareaService {
 
-  private edpoint: string = 'https://localhost:44401/';
-  private apiUrl: string = this.edpoint + 'Tarea/';
+  private edpoint: string = 'https://localhost:7085/api/Tarea/';
 
   constructor(private http: HttpClient) {}
 
   getList(): Observable<Tarea[]> {
-    return this.http.get<Tarea[]>(`${this.apiUrl}Lista`);
+    return this.http.get<Tarea[]>(`${this.edpoint}Lista`);
   }
 
   add(request: Tarea): Observable<Tarea> {
-    return this.http.post<Tarea>(`${this.apiUrl}Agregar`, request);
+    return this.http.post<Tarea>(`${this.edpoint}Agregar`, request);
   }
 
   delete(idTarea: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}Eliminar/${idTarea}`);
+    return this.http.delete<void>(`${this.edpoint}Eliminar/${idTarea}`);
   }
 }

@@ -1,4 +1,4 @@
 export interface Tarea {
-  idTarea: number;
+  idtarea: number;
   nombre: string;
 }
